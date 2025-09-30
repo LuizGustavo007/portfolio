@@ -1,0 +1,417 @@
+/* Variáveis de Cores */
+/* Variáveis de Cores - NOVA PALETA (Soft Dark com Destaque Verde Esmeralda) */
+:root {
+    --cor-fundo: #1E2125; /* Cinza escuro suave para o fundo principal */
+    --cor-primaria: #00C890; /* Verde Esmeralda vibrante para destaque */
+    --cor-secundaria: #292D31; /* Um cinza um pouco mais escuro para navbar e cards */
+    --cor-texto-principal: #EAEAEA; /* Branco suave */
+    --cor-texto-secundario: #A0A4A8; /* Cinza claro para textos de apoio */
+    --sombra-card: 0 4px 6px rgba(0, 200, 144, 0.1), 0 1px 3px rgba(0, 200, 144, 0.05);
+}
+
+/* Base e Tipografia */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif; /* Use uma fonte moderna (você deve incluir o link no HTML) */
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto-principal);
+    line-height: 1.6;
+    overflow-x: hidden; /* Evita rolagem horizontal indesejada */
+}
+
+a {
+    text-decoration: none;
+    color: var(--cor-primaria);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #4dd0e1; /* Um tom mais claro da cor primária */
+}
+
+h1, h2, h3 {
+    margin-bottom: 0.5em;
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+h2 {
+    font-size: 2.2em;
+    text-align: center;
+    margin-bottom: 1.5em;
+    color: var(--cor-primaria);
+}
+
+.highlight {
+    color: var(--cor-primaria);
+}
+
+/* Utilitários */
+.section {
+    padding: 60px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Efeito Fade-In para JavaScript */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background-color: var(--cor-secundaria);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #101010;
+}
+
+.logo {
+    font-size: 1.8em;
+    font-weight: 800;
+}
+
+.logo span {
+    color: var(--cor-primaria);
+    font-size: 1.2em;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 25px;
+}
+
+.nav-links a {
+    color: var(--cor-texto-principal);
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 3px;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    display: block;
+    margin-top: 5px;
+    background: var(--cor-primaria);
+    transition: width 0.3s ease;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--cor-texto-principal);
+    font-size: 1.5em;
+    cursor: pointer;
+    padding: 5px;
+}
+
+/* Hero Section */
+.hero {
+    height: calc(100vh - 70px); /* Altura total da tela menos a altura da navbar */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, #0a0a0a 0%, #151515 100%);
+}
+
+.hero-content h1 {
+    font-size: 4em;
+    margin-bottom: 0.2em;
+}
+
+.hero-content p {
+    font-size: 1.5em;
+    color: var(--cor-texto-secundario);
+    margin-bottom: 2em;
+}
+
+/* Botões */
+.btn {
+    display: inline-block;
+    padding: 10px 25px;
+    background-color: var(--cor-primaria);
+    color: var(--cor-fundo);
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: 2px solid var(--cor-primaria);
+    margin-right: 10px;
+}
+
+.btn:hover {
+    background-color: #4dd0e1;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    display: inline-block;
+    padding: 10px 25px;
+    background-color: transparent;
+    color: var(--cor-primaria);
+    border: 2px solid var(--cor-primaria);
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: var(--cor-primaria);
+    color: var(--cor-fundo);
+    transform: translateY(-2px);
+}
+
+/* Sobre Section */
+/* --- Estilos para a Foto de Perfil (Sobre Mim) --- */
+
+.perfil-foto {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px; /* Espaço entre a foto e o texto */
+}
+
+.perfil-foto img {
+    width: 150px; /* Tamanho da imagem */
+    height: 150px;
+    object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
+    border-radius: 50%; /* Deixa a imagem redonda */
+    border: 4px solid var(--cor-primaria); /* Borda com a cor de destaque */
+    box-shadow: 0 0 15px rgba(0, 188, 212, 0.4); /* Sombra suave */
+    transition: transform 0.3s ease;
+}
+
+.perfil-foto img:hover {
+    transform: scale(1.05); /* Pequeno efeito ao passar o mouse */
+}
+
+/* Ajuste na seção sobre para centralizar o texto após a imagem */
+.sobre-container p {
+    font-size: 1.1em;
+    color: var(--cor-texto-secundario);
+    text-align: center; /* Garante que o texto fique centralizado */
+}
+#sobre {
+    background-color: var(--cor-secundaria);
+    border-radius: 10px;
+    padding: 80px 5%;
+    margin-top: 30px;
+}
+
+.sobre-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.sobre-container p {
+    font-size: 1.1em;
+    color: var(--cor-texto-secundario);
+}
+
+/* Projetos Grid */
+.grid-projetos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+
+.card {
+    background-color: var(--cor-secundaria);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: var(--sombra-card);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 5px solid var(--cor-primaria);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 188, 212, 0.2);
+}
+
+.card h3 {
+    color: var(--cor-primaria);
+    font-size: 1.5em;
+}
+
+.card p {
+    color: var(--cor-texto-secundario);
+    margin-bottom: 20px;
+}
+
+.card .btn, .card .btn-secondary {
+    margin-top: 10px;
+    margin-right: 15px;
+    padding: 8px 18px;
+    font-size: 0.9em;
+}
+
+/* Contato Section */
+#contato {
+    text-align: center;
+    padding: 40px 5%;
+    border-top: 1px solid var(--cor-secundaria);
+}
+
+#contato p {
+    font-size: 1.2em;
+    color: var(--cor-texto-secundario);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--cor-secundaria);
+    border-top: 1px solid #101010;
+}
+
+footer p {
+    color: var(--cor-texto-secundario);
+    font-size: 0.9em;
+}
+
+/* --- Responsividade --- */
+
+/* --- OTIMIZAÇÃO E RESPONSIVIDADE PARA TODOS OS APARELHOS --- */
+
+@media (max-width: 1024px) {
+    /* Ajustes gerais para telas de tablets maiores e laptops */
+    .section {
+        padding: 40px 4%;
+    }
+
+    .hero-content h1 {
+        font-size: 3.5em;
+    }
+}
+
+@media (max-width: 768px) {
+    /* TABLETS E SMARTPHONES (Modo Paisagem) */
+    
+    /* Hero */
+    .hero {
+        height: auto;
+        min-height: 70vh; /* Garante que ainda seja uma boa altura na tela */
+        padding-top: 100px;
+        padding-bottom: 80px;
+    }
+
+    .hero-content h1 {
+        font-size: 3em;
+    }
+
+    .hero-content p {
+        font-size: 1.2em;
+    }
+
+    /* Navbar Responsiva (Menu Hamburguer) */
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--cor-secundaria);
+        position: absolute;
+        top: 60px; /* Altura da navbar */
+        left: 0;
+        padding: 10px 0;
+        border-top: 1px solid #101010;
+        transition: transform 0.3s ease-out;
+        transform: translateY(-100%); /* Esconde o menu fora da tela */
+    }
+
+    .nav-links.open {
+        display: flex;
+        transform: translateY(0); /* Mostra o menu */
+    }
+
+    .nav-links li {
+        margin: 0;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    /* Seções */
+    h2 {
+        font-size: 1.8em;
+    }
+    
+    /* Cards de Projetos */
+    .grid-projetos {
+        /* Garante que em tablets a coluna única seja a regra se a tela for menor */
+        grid-template-columns: 1fr; 
+    }
+}
+
+@media (max-width: 480px) {
+    /* SMARTPHONES (Geral) */
+
+    /* Hero */
+    .hero-content h1 {
+        font-size: 2.5em;
+    }
+    
+    .hero-content p {
+        font-size: 1em;
+    }
+
+    /* Botões */
+    .btn, .btn-secondary {
+        /* Força a quebra de linha para botões grandes no Hero */
+        display: block; 
+        margin-right: 0;
+        margin-bottom: 15px; 
+    }
+    
+    /* Cards de Projetos (Garante que os botões nos cards fiquem um ao lado do outro, se couber) */
+    .card .btn, .card .btn-secondary {
+        display: inline-block; 
+        margin-right: 10px;
+        margin-bottom: 5px;
+    }
+    
+    /* Sobre Mim */
+    .sobre-container p {
+        font-size: 1em;
+    }
+}
